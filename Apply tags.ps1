@@ -1,15 +1,12 @@
 # Login with your account
 Login-AzureRmAccount
 
-# Get all your available azure subscriptions, copy the ID of the subscription you need
-Get-AzureRmSubscription | ft
-
-# Paste the needed subscription id in the field below 
-Select-AzureRmSubscription -SubscriptionId ""
+# Get all your available azure subscriptions and select the one you need
+Get-AzureRmSubscription | Out-GridView -PassThru | Select-AzureRmSubscription
 
 # Get all VMs per environment
-$DevelopmentVMs = Get-AzureRmVM | ? {$_.Name -like "ENH-D*"}
-$AcceptanceVMs = Get-AzureRmVM | ? {$_.Name -like "ENH-A*"}
+$DevelopmentVMs = Get-AzureRmVM | ? {$_.Name -like "..."}
+$AcceptanceVMs = Get-AzureRmVM | ? {$_.Name -like "..."}
 
 # Apply tag on every development VM
 foreach ($devvm in $DevelopmentVMs)
