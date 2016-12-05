@@ -2,7 +2,7 @@ $vms = get-azurermvm
 $alertName = "Threshold_Alert_CPU_Over_85"
 $metricName = "\Processor(_Total)\% Processor Time"
 $alertDescription = "CPU Percentage > 85%"
-$email = "mathijs.hofkens@realdolmen.com" 
+$email = "" 
 
 $action = New-AzureRmAlertRuleEmail -CustomEmails $email
 foreach ($vm in $vms){
